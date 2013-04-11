@@ -1,0 +1,31 @@
+p
+  - @categories.each do |c|
+    a href='#' class='btn btn-large category' data-category="#{c.id}"
+      i class="#{c.icon} icon-white"
+      '
+      = c.name
+    '
+
+p
+  = form_for @expense, html: { class: 'form-inline' } do |f|
+    = f.hidden_field :category_id
+    = f.number_field :value, placeholder: 'Enter amount'
+    '
+    = f.text_field :comment, placeholder: 'Comment'
+    '
+    = f.submit 'Submit', class: 'btn btn-primary'
+
+div
+  h3 Last 10 expenses
+  table.table.table-bordered.table-striped
+    thead
+      tr
+        th Category
+        th Amount
+        th Comment
+    tbody
+      - @last_expenses.each do |e|
+        tr
+          td = e.category.try(:name)
+          td = e.value
+          td = e.comment
