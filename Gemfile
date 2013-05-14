@@ -13,3 +13,5 @@ end
 
 gem 'jquery-rails'
 gem 'slim-rails'
+gem 'devise'
+gem 'simple_form'

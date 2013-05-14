@@ -1,15 +1,38 @@
-p
-  - @categories.each do |c|
-    a href='#' class='btn btn-large category' data-category="#{c.id}"
-      i class="#{c.icon} icon-white"
-      '
-      = c.name
-    '
+a[href="#operation_category" role="button" class="btn" data-toggle="modal"]= t('views.popup.select_operation')
+
+div[id="operation_type" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"]
+  div.modal-header
+    button[type="button" class="close" data-dismiss="modal" aria-hidden="true"] ×
+    h3#myModalLabelModal= t('views.popup.select_operation')
+  div.modal-body
+    button[class="btn btn-xlarge"]
+      i[class="icon-plus"]
+    button[class="btn btn-xlarge"]
+      i[class="icon-minus"]
+
+#operation_category.modal.hide.fade aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+  div.modal-header
+      button[type="button" class="close" data-dismiss="modal" aria-hidden="true"] ×
+      h3#myModalLabelModal= t('views.popup.select_category')
+  .modal-body
+    - @categories.each do |category|
+      button[class="btn btn-large"]
+        =' category.name
+        i[class="icon-#{category.icon}"]
+
+/p
+/  - @categories.each do |c|
+/    a href='#' class='btn btn-large category' data-category="#{c.id}"
+/      i class="#{c.icon} icon-white"
+/      '
+/      = c.name
+/    '
 
 p
   = form_for @expense, html: { class: 'form-inline' } do |f|
     = f.hidden_field :category_id
     = f.number_field :value, placeholder: 'Enter amount'
+    = f.hidden_field :user_id
     '
     = f.text_field :comment, placeholder: 'Comment'
     '

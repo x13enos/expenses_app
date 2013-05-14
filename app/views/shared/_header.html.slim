@@ -1,0 +1,8 @@
+div
+  - if current_user
+    span.pull-right
+      span =' t('views.front.user.hello_user_name', user: current_user.name)
+      ' /
+      span = link_to t('views.front.user.exit'), destroy_user_session_path, method: :delete
+  - else
+    span.pull-right = link_to 'Вход', new_user_session_path

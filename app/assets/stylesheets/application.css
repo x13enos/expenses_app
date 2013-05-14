@@ -7,3 +7,16 @@
 body {
   padding-top: 20px;
 }
+
+.btn-xlarge {
+  padding: 38px 48px;
+  font-size: 60px;
+  line-height: normal;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+
+.modal-body .btn-xlarge{
+  margin-left: 80px;
+}
