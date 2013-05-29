@@ -4,10 +4,14 @@
 ru:
   hello: "Привет мир!"
   views:
+    add: Добавить
+
     popup:
       select_operation: Выберите тип операции
       select_category: Выберите категорию
     front:
+      expenses:
+        last: Последние %{count} записей
       user:
         hello_user_name: Здравствуйте, %{user}
         exit: Выход

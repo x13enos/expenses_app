@@ -1,54 +1,30 @@
-a[href="#operation_category" role="button" class="btn" data-toggle="modal"]= t('views.popup.select_operation')
+span.font_h2= t('views.popup.select_operation')
+br
+.row.span12
+  button[class="btn btn-xlarge"]
+    i[class="icon-minus"]
+  button[class="btn btn-xlarge"]
+    i[class="icon-plus"]
 
-div[id="operation_type" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"]
-  div.modal-header
-    button[type="button" class="close" data-dismiss="modal" aria-hidden="true"] ×
-    h3#myModalLabelModal= t('views.popup.select_operation')
-  div.modal-body
-    button[class="btn btn-xlarge"]
-      i[class="icon-plus"]
-    button[class="btn btn-xlarge"]
-      i[class="icon-minus"]
 
-#operation_category.modal.hide.fade aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
-  div.modal-header
-      button[type="button" class="close" data-dismiss="modal" aria-hidden="true"] ×
-      h3#myModalLabelModal= t('views.popup.select_category')
-  .modal-body
-    - @categories.each do |category|
-      button[class="btn btn-large"]
-        =' category.name
-        i[class="icon-#{category.icon}"]
+.categories_section.hide
+  span.font_h2= t('views.popup.select_category')
+  br
+  .row.span12
+    .span6.categories_block
 
-/p
-/  - @categories.each do |c|
-/    a href='#' class='btn btn-large category' data-category="#{c.id}"
-/      i class="#{c.icon} icon-white"
-/      '
-/      = c.name
-/    '
+      - @categories.each do |category|
+        button[class="btn btn-category" value="#{category.id}"]
+          =' category.name
+          i[class="icon-#{category.icon}"]
 
-p
-  = form_for @expense, html: { class: 'form-inline' } do |f|
-    = f.hidden_field :category_id
-    = f.number_field :value, placeholder: 'Enter amount'
-    = f.hidden_field :user_id
-    '
-    = f.text_field :comment, placeholder: 'Comment'
-    '
-    = f.submit 'Submit', class: 'btn btn-primary'
-
-div
-  h3 Last 10 expenses
-  table.table.table-bordered.table-striped
-    thead
-      tr
-        th Category
-        th Amount
-        th Comment
-    tbody
-      - @last_expenses.each do |e|
-        tr
-          td = e.category.try(:name)
-          td = e.value
-          td = e.comment
+.value_section.hide
+  p
+    = form_for @expense do |f|
+      = f.hidden_field :category_id
+      = f.hidden_field :type_operation
+      = f.number_field :value, placeholder: 'Enter amount'
+      br
+      = f.text_area :comment, placeholder: 'Comment', rows: 3
+      br
+      = f.submit 'Submit', class: 'btn btn-primary'

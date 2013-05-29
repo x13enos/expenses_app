@@ -5,18 +5,61 @@
 */
 
 body {
-  padding-top: 20px;
+  padding: 40px 0;
 }
 
 .btn-xlarge {
-  padding: 38px 48px;
-  font-size: 60px;
+  display: block;
+  float: left;
+  padding: 20px 30px;
+  font-size: 34px;
+  line-height: normal;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  margin: 10px 10px 10px 0;
+}
+
+.btn-category{
+  display: block;
+  float: left;
+  padding: 10px 20px;
+  font-size: 26px;
   line-height: normal;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
 }
 
-.modal-body .btn-xlarge{
-  margin-left: 80px;
+
+
+.font_h2{
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.categories_block{
+  margin: 15px 0;
+}
+
+.content_block{
+  margin-top: 30px;
+}
+
+.sign_in_block{
+  margin-top: 10px;
+}
+
+.span_h2{
+  margin-top: 8px;
+}
+
+.span_h2 a{
+  color: black;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.span_h2 a:hover{
+  text-decoration: none;
 }

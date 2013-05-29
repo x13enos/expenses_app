@@ -1,0 +1,18 @@
+div
+  .font_h2.pull-left = t('views.front.expenses.last', count: 5)
+  .pull-right
+    = link_to t('views.add'), new_expense_path, class: "btn btn-success"
+  br
+  br
+  table.table.table-bordered.table-striped
+    thead
+      tr
+        th Category
+        th Amount
+        th Comment
+    tbody
+      - @last_expenses.each do |e|
+        tr
+          td = e.category.try(:name)
+          td = e.value
+          td = e.comment

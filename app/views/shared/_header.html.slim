@@ -1,8 +1,12 @@
-div
-  - if current_user
-    span.pull-right
-      span =' t('views.front.user.hello_user_name', user: current_user.name)
-      ' /
-      span = link_to t('views.front.user.exit'), destroy_user_session_path, method: :delete
-  - else
-    span.pull-right = link_to 'Вход', new_user_session_path
+div class="navbar navbar-fixed-top"
+  div class="navbar-inner"
+    div class="container"
+      .span_h2= link_to 'ExApp', (current_user ? dashboard_index_path : home_index_path)
+      ul class="nav"
+      .pull-right.sign_in_block
+        - if current_user
+          span =' t('views.front.user.hello_user_name', user: current_user.name)
+          ' /
+          span = link_to t('views.front.user.exit'), destroy_user_session_path, method: :delete
+        - else
+         = link_to 'Вход', new_user_session_path

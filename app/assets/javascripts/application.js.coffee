@@ -4,15 +4,18 @@
 
 $ ->
 
-  $('.category').click (e) ->
-    e.preventDefault()
-    $('.btn-success').removeClass('btn-success')
-    el = $(@)
-    el.addClass('btn-success')
-    $('#expense_category_id').val($(@).data('category'))
-
   $('.btn-xlarge').click ->
+    $('.btn-xlarge').removeClass('btn-success')
     if $(this).find('i').attr('class') == 'icon-plus'
-      operation_type = 'plus'
+      $('#expense_type_operation').val('plus')
     else
-      operation_type = 'minus'
+      $('#expense_type_operation').val('minus')
+    $(this).addClass('btn-success')
+    $('.categories_section').show()
+
+  $('.btn-category').click ->
+    $('.btn-category').removeClass('btn-success')
+    $('#expense_category_id').val($(this).attr('value'))
+    $(this).addClass('btn-success')
+    $('.value_section').show()
+
